@@ -1,0 +1,9 @@
+//learn by shakyo: https://github.com/nzakas/computer-science-in-javascript/blob/master/data-structures/binary-search-tree/binary-search-tree.js
+
+function BinarySearchTree(){
+
+//pointer to root node in the tree
+this._root = null
+
+}
+
