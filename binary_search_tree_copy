@@ -1,9 +1,66 @@
 //learn by shakyo: https://github.com/nzakas/computer-science-in-javascript/blob/master/data-structures/binary-search-tree/binary-search-tree.js
 
-function BinarySearchTree(){
+function BinarySearchTree() {
 
-//pointer to root node in the tree
-this._root = null
+	//pointer to root node in the tree
+	this._root = null
 
 }
 
+BinarySearchTree.prototype = {
+
+	//restore constructor
+	constructor : BinarySearchTree,
+
+	add : function (value) {
+
+		//new node object
+		var node = {
+			value : value,
+			left : null,
+			right : null
+		},
+
+		//object, to point to current place when traversing
+		current;
+
+		if (this._root === null) {
+			this._root = node;
+		} else {
+			current = this._root;
+			while (true) {
+
+				//if the new value is less than this nodes value, go left
+				if (value < current.value) {
+
+					//if no node in left, then put node there
+					if (current.left === null) {
+						current.left = node;
+						break;
+					} else {
+						//move to next place
+						current = current.left;
+					}
+					//if value is larger than this node, go right
+				} else if (value > current.value) {
+
+					//if there is no right, put node here
+					if (current.right === null) {
+						current.right = node;
+						break;
+					} else {
+						current = current.right;
+					}
+
+					//if the node value is equal, exit
+				} else {
+					break;
+				}
+
+			}
+
+		}
+
+	}
+
+}
