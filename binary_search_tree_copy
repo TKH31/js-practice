@@ -61,6 +61,55 @@ BinarySearchTree.prototype = {
 
 		}
 
+	},
+
+	toArray : function () {
+		var result = [];
+
+		this.traverse(function (node) {
+			result.push(node.value);
+		});
+
+		return result;
+
+	},
+
+	toString : function () {
+		return this.toArray().toString();
+	},
+
+	size : function () {
+		var length = 0;
+		this.traverse(function (node) {
+			length++
+		});
+
+		return length;
+	},
+
+	traverse : function (process) {
+
+		//helper function
+		function inOrder(node) {
+
+			if (node) {
+
+				//traverse the left subtree
+				if (node.left !== null) {
+					inOrder(node.left);
+				}
+
+				process.call(this, node);
+
+				//traverse the right subtree
+				if (node.right !== null) {
+					inOrder(node.right);
+				}
+			}
+		}
+
+		//start with the root
+		inOrder(this._root);
 	}
 
 }
